@@ -19,13 +19,19 @@ An AI-powered web application that analyzes AI-generated answers, identifies pot
 - CSS
 - REST API
 
-
 ## 📂 Project Structure
 
-```text
 AI_Hallucination-Detector/
 │
 ├── app.py
 ├── templates/
 │   └── index.html
 └── README.md
+
+## 🚀 How to Run
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Anandh458/AI_Hallucination-Detector.git
+cd AI_Hallucination-Detector
