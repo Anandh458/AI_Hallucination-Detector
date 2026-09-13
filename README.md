@@ -25,5 +25,4 @@ Install the required packages:
 ```bash
 pip install flask requests
 
-python app.py
-http://127.0.0.1:5000
+
