@@ -27,6 +27,6 @@ A web-based system that analyzes AI-generated text, identifies factual claims, a
 ```bash
 pip install flask requests
 
-5. Run the application:
+
 ```bash
 python app.py
