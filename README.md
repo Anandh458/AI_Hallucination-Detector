@@ -2,15 +2,15 @@
 
 A web application that analyzes AI-generated text and helps identify possible hallucinations.
 
-## Features
+## ✨ Features
 
 - Claim identification
 - Hallucination risk score
 - Warning word detection
 - Evidence search
-- Simple and attractive UI
+- Attractive and responsive UI
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 - Python
 - Flask
@@ -18,11 +18,9 @@ A web application that analyzes AI-generated text and helps identify possible ha
 - CSS
 - Requests
 
-## How to Run
+## 🚀 How to Run
 
-Install the required packages:
+Install dependencies:
 
 ```bash
 pip install flask requests
-
-
