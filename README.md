@@ -22,12 +22,12 @@ A web application that analyzes AI-generated text and helps identify possible ha
 
 Install dependencies:
 
-```bash
 pip install flask requests
-3. Run the application:
+
+Run the application:
 
 python app.py
 
-4. Open in browser:
+Open in browser:
 
 http://127.0.0.1:5000
