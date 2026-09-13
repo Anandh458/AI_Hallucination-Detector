@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Hallucination Detector</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+            color: #172033;
+        }
+
+        .navbar {
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .badge {
+            background: #e0e7ff;
+            color: #4338ca;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 45px 20px 30px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin: 10px 0;
+        }
+
+        .hero h1 span {
+            color: #4f46e5;
+        }
+
+        .hero p {
+            color: #64748b;
+            font-size: 17px;
+        }
+
+        .card {
+            width: 90%;
+            max-width: 900px;
+            margin: 25px auto;
+            background: rgba(255,255,255,0.9);
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 15px 40px rgba(15,23,42,0.10);
+            border: 1px solid #e2e8f0;
+        }
+
+        textarea {
+            width: 100%;
+            height: 220px;
+            padding: 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            resize: vertical;
+            font-size: 16px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        textarea:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 4px #eef2ff;
+        }
+
+        textarea::placeholder {
+            color: #94a3b8;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 18px;
+            padding: 16px;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(90deg, #4f46e5, #7c3aed);
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(79,70,229,0.25);
+        }
+
+        .features {
+            width: 90%;
+            max-width: 900px;
+            margin: 25px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .feature {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .feature-icon {
+            font-size: 28px;
+        }
+
+        .feature h3 {
+            margin: 10px 0 5px;
+        }
+
+        .feature p {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 24px;
+            background: #f8fafc;
+            border-radius: 18px;
+            border-left: 5px solid #4f46e5;
+            line-height: 1.8;
+        }
+
+        .result h2 {
+            margin-top: 0;
+            color: #312e81;
+        }
+
+        a {
+            color: #4f46e5;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        @media (max-width: 650px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="logo">🤖 HalluGuard</div>
+        <div class="badge">AI Verification System</div>
+    </div>
+
+
+    <section class="hero">
+
+        <h1>Detect <span>AI Hallucinations</span></h1>
+
+        <p>
+            Analyze AI-generated content and verify factual claims
+            using evidence sources.
+        </p>
+
+    </section>
+
+
+    <div class="card">
+
+        <form method="POST">
+
+            <textarea
+                name="text"
+                placeholder="Paste your AI-generated answer here...
+
+Example:
+Artificial Intelligence is a branch of computer science..."
+            ></textarea>
+
+            <button type="submit">
+                🔍 Analyze AI Response
+            </button>
+
+        </form>
+
+
+        {% if result %}
+
+        <div class="result">
+
+            <h2>📊 Analysis Result</h2>
+
+            <p>{{ result | safe }}</p>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature">
+            <div class="feature-icon">🧠</div>
+            <h3>Claim Detection</h3>
+            <p>Identifies factual claims from AI-generated text.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🔎</div>
+            <h3>Evidence Search</h3>
+            <p>Finds relevant external sources for verification.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🛡️</div>
+            <h3>Risk Analysis</h3>
+            <p>Highlights possible hallucination risks.</p>
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+        AI Hallucination Detector • Student Project
+    </div>
+
+</body>
+</html>
