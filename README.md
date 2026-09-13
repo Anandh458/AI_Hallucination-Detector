@@ -28,5 +28,4 @@ AI_Hallucination-Detector/
 ├── app.py
 ├── templates/
 │   └── index.html
-├── README.md
-└── requirements.txt
+└── README.md
