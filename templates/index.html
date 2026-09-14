@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>AI Hallucination Detector</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HalluGuard | AI Fact Verification</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -11,198 +16,708 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #eef2ff, #f8fafc);
-            color: #172033;
+            color: #172554;
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 10% 5%,
+                    #dbeafe 0,
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 90% 10%,
+                    #cffafe 0,
+                    transparent 28%
+                ),
+                linear-gradient(
+                    135deg,
+                    #f8fbff,
+                    #eef5ff
+                );
         }
 
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
         .navbar {
-            padding: 20px 8%;
+            width: 92%;
+            max-width: 1150px;
+            margin: auto;
+            padding: 22px 0;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 22px;
-            font-weight: bold;
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
-        .badge {
-            background: #e0e7ff;
-            color: #4338ca;
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-size: 13px;
+        .logo span {
+            color: #2563eb;
         }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 9px 15px;
+
+            border-radius: 30px;
+
+            background: rgba(255,255,255,0.85);
+
+            border: 1px solid #dbeafe;
+
+            color: #0369a1;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            box-shadow:
+                0 5px 20px rgba(30,64,175,0.06);
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+
+            background: #06b6d4;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 10px rgba(6,182,212,0.7);
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
 
         .hero {
             text-align: center;
-            padding: 45px 20px 30px;
+
+            padding: 65px 20px 40px;
+        }
+
+        .tag {
+            display: inline-block;
+
+            padding: 9px 16px;
+
+            border-radius: 30px;
+
+            background: #e0f2fe;
+
+            color: #0369a1;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 1.2px;
         }
 
         .hero h1 {
-            font-size: 42px;
-            margin: 10px 0;
+            max-width: 850px;
+
+            margin: 20px auto 15px;
+
+            font-size: 52px;
+
+            line-height: 1.1;
+
+            letter-spacing: -1.8px;
         }
 
         .hero h1 span {
-            color: #4f46e5;
+            color: #2563eb;
         }
 
         .hero p {
+            max-width: 680px;
+
+            margin: auto;
+
             color: #64748b;
+
             font-size: 17px;
+
+            line-height: 1.7;
         }
 
-        .card {
-            width: 90%;
+
+        /* =========================
+           HOW IT WORKS
+        ========================= */
+
+        .steps {
+            width: 92%;
             max-width: 900px;
-            margin: 25px auto;
-            background: rgba(255,255,255,0.9);
-            padding: 30px;
-            border-radius: 24px;
-            box-shadow: 0 15px 40px rgba(15,23,42,0.10);
-            border: 1px solid #e2e8f0;
+
+            margin: 20px auto 35px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+        }
+
+        .step {
+            background:
+                rgba(255,255,255,0.82);
+
+            border:
+                1px solid #dbeafe;
+
+            border-radius: 18px;
+
+            padding: 18px;
+
+            text-align: center;
+
+            box-shadow:
+                0 8px 25px rgba(30,64,175,0.04);
+        }
+
+        .step-number {
+            width: 34px;
+            height: 34px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #e0f2fe;
+
+            color: #0369a1;
+
+            font-weight: bold;
+        }
+
+        .step h4 {
+            margin: 10px 0 5px;
+
+            color: #1e3a8a;
+        }
+
+        .step p {
+            margin: 0;
+
+            color: #64748b;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           MAIN CARD
+        ========================= */
+
+        .main-card {
+            width: 92%;
+            max-width: 900px;
+
+            margin: auto;
+
+            padding: 32px;
+
+            background:
+                rgba(255,255,255,0.94);
+
+            border:
+                1px solid #dbeafe;
+
+            border-radius: 26px;
+
+            box-shadow:
+                0 25px 70px
+                rgba(30,64,175,0.10);
+        }
+
+        .input-header {
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            margin-bottom: 13px;
+        }
+
+        .input-title {
+            font-size: 18px;
+
+            font-weight: bold;
+
+            color: #1e3a8a;
+        }
+
+        .input-hint {
+            color: #64748b;
+
+            font-size: 12px;
         }
 
         textarea {
             width: 100%;
-            height: 220px;
-            padding: 18px;
-            border: 2px solid #e2e8f0;
-            border-radius: 16px;
-            resize: vertical;
-            font-size: 16px;
-            outline: none;
-            transition: 0.2s;
-        }
 
-        textarea:focus {
-            border-color: #6366f1;
-            box-shadow: 0 0 0 4px #eef2ff;
+            min-height: 220px;
+
+            resize: vertical;
+
+            padding: 18px;
+
+            border:
+                2px solid #dbeafe;
+
+            border-radius: 17px;
+
+            outline: none;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 16px;
+
+            color: #172554;
+
+            background: #f8fbff;
+
+            transition: 0.25s;
         }
 
         textarea::placeholder {
             color: #94a3b8;
         }
 
-        button {
-            width: 100%;
-            margin-top: 18px;
-            padding: 16px;
-            border: none;
-            border-radius: 14px;
-            background: linear-gradient(90deg, #4f46e5, #7c3aed);
-            color: white;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-        }
+        textarea:focus {
+            border-color: #2563eb;
 
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(79,70,229,0.25);
-        }
+            box-shadow:
+                0 0 0 4px #dbeafe;
 
-        .features {
-            width: 90%;
-            max-width: 900px;
-            margin: 25px auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .feature {
             background: white;
-            padding: 20px;
-            border-radius: 16px;
-            text-align: center;
-            border: 1px solid #e2e8f0;
         }
 
-        .feature-icon {
-            font-size: 28px;
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .analyze-btn {
+            width: 100%;
+
+            margin-top: 17px;
+
+            padding: 17px;
+
+            border: none;
+
+            border-radius: 15px;
+
+            cursor: pointer;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #2563eb,
+                    #0891b2
+                );
+
+            box-shadow:
+                0 10px 25px
+                rgba(37,99,235,0.22);
+
+            transition: 0.25s;
         }
 
-        .feature h3 {
-            margin: 10px 0 5px;
+        .analyze-btn:hover {
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 15px 32px
+                rgba(37,99,235,0.30);
         }
 
-        .feature p {
-            color: #64748b;
-            font-size: 13px;
+        .analyze-btn:active {
+            transform:
+                translateY(0);
         }
+
+
+        /* =========================
+           RESULT
+        ========================= */
 
         .result {
-            margin-top: 25px;
-            padding: 24px;
-            background: #f8fafc;
-            border-radius: 18px;
-            border-left: 5px solid #4f46e5;
+            margin-top: 30px;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            background: #f8fbff;
+
+            border:
+                1px solid #dbeafe;
+
             line-height: 1.8;
         }
 
-        .result h2 {
-            margin-top: 0;
-            color: #312e81;
+        .result-heading {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 20px;
+
+            color: #1e3a8a;
         }
 
+        .result-heading h2 {
+            margin: 0;
+
+            font-size: 21px;
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features {
+            width: 92%;
+            max-width: 900px;
+
+            margin: 35px auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+        .feature {
+            background:
+                rgba(255,255,255,0.90);
+
+            border:
+                1px solid #dbeafe;
+
+            border-radius: 19px;
+
+            padding: 25px;
+
+            transition: 0.25s;
+
+            box-shadow:
+                0 8px 25px
+                rgba(30,64,175,0.04);
+        }
+
+        .feature:hover {
+            transform:
+                translateY(-5px);
+
+            border-color:
+                #7dd3fc;
+
+            box-shadow:
+                0 15px 35px
+                rgba(14,116,144,0.10);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background: #e0f2fe;
+
+            font-size: 26px;
+        }
+
+        .feature h3 {
+            margin:
+                15px 0 7px;
+
+            color: #1e3a8a;
+        }
+
+        .feature p {
+            margin: 0;
+
+            color: #64748b;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           LINKS
+        ========================= */
+
         a {
-            color: #4f46e5;
+            color: #0369a1;
+
             font-weight: bold;
+
             text-decoration: none;
+
+            transition: 0.2s;
         }
 
         a:hover {
-            text-decoration: underline;
+            color: #2563eb;
+
+            text-decoration:
+                underline;
         }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         .footer {
             text-align: center;
-            padding: 30px;
+
+            padding: 40px 20px;
+
             color: #94a3b8;
+
             font-size: 13px;
         }
 
-        @media (max-width: 650px) {
+        .footer strong {
+            color: #2563eb;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                width: 90%;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .status {
+                font-size: 10px;
+
+                padding:
+                    7px 10px;
+            }
+
+            .hero {
+                padding:
+                    45px 20px 30px;
+            }
+
             .hero h1 {
-                font-size: 32px;
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .steps {
+                grid-template-columns:
+                    1fr;
             }
 
             .features {
-                grid-template-columns: 1fr;
+                grid-template-columns:
+                    1fr;
             }
 
-            .card {
+            .main-card {
                 padding: 20px;
             }
+
+            .input-header {
+                display: block;
+            }
+
+            .input-hint {
+                display: block;
+
+                margin-top: 5px;
+            }
         }
+
     </style>
 </head>
 
+
 <body>
 
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
     <div class="navbar">
-        <div class="logo">🤖 HalluGuard</div>
-        <div class="badge">AI Verification System</div>
+
+        <div class="logo">
+            🤖 Hallu<span>Guard</span>
+        </div>
+
+        <div class="status">
+            <span class="dot"></span>
+
+            AI System Ready
+        </div>
+
     </div>
 
 
+    <!-- =========================
+         HERO
+    ========================= -->
+
     <section class="hero">
 
-        <h1>Detect <span>AI Hallucinations</span></h1>
+        <div class="tag">
+            ✦ AI FACT VERIFICATION
+        </div>
+
+        <h1>
+            Is this AI answer
+            <span>trustworthy?</span>
+        </h1>
 
         <p>
-            Analyze AI-generated content and verify factual claims
-            using evidence sources.
+            Paste an AI-generated response and let
+            HalluGuard analyze its claims using
+            AI and external evidence.
         </p>
 
     </section>
 
 
-    <div class="card">
+    <!-- =========================
+         HOW IT WORKS
+    ========================= -->
+
+    <div class="steps">
+
+
+        <div class="step">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <h4>
+                Paste
+            </h4>
+
+            <p>
+                Enter the AI-generated answer
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <h4>
+                Verify
+            </h4>
+
+            <p>
+                Analyze claims with evidence
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <h4>
+                Get Verdict
+            </h4>
+
+            <p>
+                View result and sources
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         MAIN CARD
+    ========================= -->
+
+    <div class="main-card">
+
+
+        <div class="input-header">
+
+            <div class="input-title">
+                📝 Paste AI-generated text
+            </div>
+
+            <div class="input-hint">
+                Multiple claims supported
+            </div>
+
+        </div>
+
 
         <form method="POST">
 
@@ -211,11 +726,18 @@
                 placeholder="Paste your AI-generated answer here...
 
 Example:
-Artificial Intelligence is a branch of computer science..."
+
+The Earth is flat.
+
+Or paste a complete AI-generated answer containing multiple claims."
             ></textarea>
 
-            <button type="submit">
-                🔍 Analyze AI Response
+
+            <button
+                class="analyze-btn"
+                type="submit"
+            >
+                🔍 Check This Answer
             </button>
 
         </form>
@@ -225,43 +747,109 @@ Artificial Intelligence is a branch of computer science..."
 
         <div class="result">
 
-            <h2>📊 Analysis Result</h2>
+            <div class="result-heading">
 
-            <p>{{ result | safe }}</p>
+                <span>📊</span>
+
+                <h2>
+                    Verification Results
+                </h2>
+
+            </div>
+
+            {{ result | safe }}
 
         </div>
 
         {% endif %}
 
+
     </div>
 
+
+    <!-- =========================
+         FEATURES
+    ========================= -->
 
     <div class="features">
 
-        <div class="feature">
-            <div class="feature-icon">🧠</div>
-            <h3>Claim Detection</h3>
-            <p>Identifies factual claims from AI-generated text.</p>
-        </div>
 
         <div class="feature">
-            <div class="feature-icon">🔎</div>
-            <h3>Evidence Search</h3>
-            <p>Finds relevant external sources for verification.</p>
+
+            <div class="feature-icon">
+                🧠
+            </div>
+
+            <h3>
+                Smart Claim Detection
+            </h3>
+
+            <p>
+                Breaks AI-generated text into
+                individual claims for analysis.
+            </p>
+
         </div>
 
+
         <div class="feature">
-            <div class="feature-icon">🛡️</div>
-            <h3>Risk Analysis</h3>
-            <p>Highlights possible hallucination risks.</p>
+
+            <div class="feature-icon">
+                📚
+            </div>
+
+            <h3>
+                Evidence Based
+            </h3>
+
+            <p>
+                Uses external reference information
+                to support verification.
+            </p>
+
         </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🛡️
+            </div>
+
+            <h3>
+                Clear Verdict
+            </h3>
+
+            <p>
+                Shows TRUE, FALSE or UNCERTAIN
+                with a confidence score.
+            </p>
+
+        </div>
+
 
     </div>
 
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
     <div class="footer">
-        AI Hallucination Detector • Student Project
+
+        🤖 <strong>HalluGuard</strong>
+
+        <br><br>
+
+        Gemini AI + Wikipedia Evidence
+
+        <br>
+
+        AI Hallucination Detection System
+
     </div>
 
+
 </body>
+
 </html>
